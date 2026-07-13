@@ -1,26 +1,164 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* LetteRing 디자인 시스템 — 따뜻하고 감성적인 주얼리 브랜드 팔레트 */
+@theme {
+  /* 배경: 따뜻한 베이지 (순백 대신) */
+  --color-warm-beige: #faf6f0;
+  /* 카드/표면용 크림 톤 (순백 #ffffff 회피) */
+  --color-cream: #fffdf9;
+  /* 주 강조색: 깊은 버건디 */
+  --color-burgundy: #6b1d2f;
+  --color-burgundy-deep: #551624;
+  /* 본문/선: 흙빛 브라운 (순흑 #000000 회피) */
+  --color-brown: #4a3a35;
+  /* 부드러운 브라운 (보조 텍스트/얇은 선) */
+  --color-brown-soft: #8a7a72;
+  /* 은은한 골드 포인트 */
+  --color-gold: #b08d57;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-warm-beige);
+  color: var(--color-brown);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 셀렉션 하이라이트도 브랜드 톤으로 */
+::selection {
+  background-color: var(--color-burgundy);
+  color: var(--color-warm-beige);
+}
+
+/* 키보드 포커스 링: 기본 파란색 대신 버건디 */
+:focus-visible {
+  outline: 2px solid var(--color-burgundy);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* 모바일 탭 시 회색 하이라이트 제거 (프리미엄한 터치감) */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* --- 모션: 페이지 로드 시 은은하게 떠오르는 스태거 효과 --- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    animation: none;
+  }
+}
+
+/* --- 질감: 사진 플레이스홀더에 얹는 필름 노이즈 --- */
+.grain {
+  position: relative;
+  overflow: hidden;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+
+/* --- 따뜻한 조명의 사진 플레이스홀더 그라디언트 --- */
+.photo-warm-a {
+  background: radial-gradient(130% 110% at 22% 12%, #f6ead9 0%, #e6cdae 42%, #cda684 72%, #a97c5c 100%);
+}
+
+.photo-warm-b {
+  background: radial-gradient(130% 110% at 75% 18%, #f4e3d4 0%, #e0bfa4 40%, #b98a72 72%, #8a5646 100%);
+}
+
+.photo-warm-c {
+  background: radial-gradient(125% 115% at 50% 0%, #f1e0cf 0%, #d9b394 45%, #a97862 75%, #6b3d3a 100%);
+}
+
+.photo-warm-d {
+  background: radial-gradient(130% 120% at 30% 85%, #f3e7d8 0%, #e3c6a8 40%, #c39177 70%, #7c4a44 100%);
+}
+
+/* --- 버건디 왁스 실링 (About 페이지 상단 오브제) --- */
+.wax-seal {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 6rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 2.1rem;
+  color: #f2ddd0;
+  background: radial-gradient(circle at 32% 28%, #953450 0%, #6b1d2f 56%, #4a1220 100%);
+  border-radius: 46% 54% 57% 43% / 52% 45% 55% 48%;
+  box-shadow:
+    inset 0 2px 5px rgba(255, 238, 224, 0.28),
+    inset 0 -5px 10px rgba(38, 7, 15, 0.55),
+    0 14px 30px -12px rgba(107, 29, 47, 0.6);
+}
+
+.wax-seal::before {
+  content: "";
+  position: absolute;
+  inset: 0.7rem;
+  border-radius: 50%;
+  border: 1px solid rgba(242, 221, 208, 0.45);
+}
+
+/* 옆으로 흘러내린 작은 왁스 방울 */
+.wax-seal::after {
+  content: "";
+  position: absolute;
+  right: -0.35rem;
+  bottom: 0.5rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  background: radial-gradient(circle at 35% 30%, #8d2e47, #571727);
+  border-radius: 55% 45% 60% 40% / 50% 55% 45% 50%;
+  box-shadow: inset 0 -2px 4px rgba(38, 7, 15, 0.5);
+}
+
+/* --- 항공우편 봉투 가장자리 줄무늬 (Letters 페이지) --- */
+.postal-edge {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #6b1d2f 0 10px,
+    transparent 10px 20px,
+    #b08d57 20px 30px,
+    transparent 30px 40px
+  );
+}
+
+/* --- 가로 스크롤 갤러리: 스크롤바 숨김 --- */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
