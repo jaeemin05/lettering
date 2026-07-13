@@ -31,7 +31,7 @@ export default function Home() {
           >
             마음을
             <br />
-            <span className="italic">반지</span>에 새깁니다
+            반지에 새깁니다
           </h1>
           <p
             className="fade-up mt-8 max-w-md text-base leading-relaxed text-brown-soft sm:text-lg"
@@ -47,7 +47,7 @@ export default function Home() {
           >
             <Link
               href="/shop"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-burgundy px-8 py-3.5 text-sm tracking-wide text-warm-beige transition-colors hover:bg-burgundy-deep"
+              className="group inline-flex items-center justify-center gap-2 bg-burgundy px-9 py-4 text-sm tracking-[0.15em] text-warm-beige transition-colors hover:bg-burgundy-deep"
             >
               제품 둘러보기
               <ArrowRight
@@ -57,7 +57,7 @@ export default function Home() {
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-brown/20 px-8 py-3.5 text-sm tracking-wide text-brown transition-colors hover:border-burgundy hover:text-burgundy"
+              className="inline-flex items-center justify-center gap-2 border border-brown/25 px-9 py-4 text-sm tracking-[0.15em] text-brown transition-colors hover:border-burgundy hover:text-burgundy"
             >
               브랜드 이야기
             </Link>
@@ -66,7 +66,7 @@ export default function Home() {
 
         {/* 대형 사진 플레이스홀더: 편지 위에 놓인 반지 */}
         <div className="fade-up relative mx-auto w-full max-w-md" style={delay("0.25s")}>
-          <div className="grain photo-warm-a flex aspect-[4/5] items-center justify-center rounded-[2rem] shadow-[0_40px_80px_-40px_rgba(74,58,53,0.5)]">
+          <div className="grain photo-warm-a flex aspect-[4/5] items-center justify-center rounded-sm shadow-[0_40px_80px_-40px_rgba(74,58,53,0.5)]">
             {/* 반지 아래 깔린 편지지 */}
             <div className="absolute inset-x-12 bottom-16 h-44 rotate-[5deg] rounded-sm bg-cream/45 shadow-[0_10px_24px_-12px_rgba(74,58,53,0.4)]">
               <div className="mx-5 mt-6 space-y-3">
@@ -84,7 +84,7 @@ export default function Home() {
 
           {/* 모서리에 겹쳐진 손편지 카드 */}
           <div className="absolute -bottom-9 -left-4 w-56 -rotate-[4deg] rounded-sm bg-cream px-6 py-5 shadow-[0_18px_40px_-18px_rgba(74,58,53,0.45)] sm:-left-8">
-            <p className="font-serif text-sm italic leading-relaxed text-brown">
+            <p className="font-serif text-sm leading-relaxed text-brown">
               &ldquo;늘 고마워요.
               <br />이 마음, 여기 새겨둘게요.&rdquo;
             </p>
@@ -120,7 +120,7 @@ export default function Home() {
           {gallery.map((item) => (
             <figure
               key={item.num}
-              className={`grain ${item.photo} relative aspect-square w-60 shrink-0 snap-center rounded-2xl shadow-[0_24px_48px_-24px_rgba(74,58,53,0.5)] transition-transform duration-500 hover:-translate-y-1.5 sm:w-72`}
+              className={`grain ${item.photo} relative aspect-square w-60 shrink-0 snap-center rounded-sm shadow-[0_24px_48px_-24px_rgba(74,58,53,0.5)] transition-transform duration-500 hover:-translate-y-1.5 sm:w-72`}
             >
               <div className="flex h-full items-center justify-center">
                 {item.double ? (
@@ -176,7 +176,7 @@ export default function Home() {
       {/* 편지 인용 + CTA */}
       <section className="border-t border-brown/10 bg-cream">
         <div className="mx-auto max-w-3xl px-6 py-24 text-center">
-          <p className="font-serif text-2xl italic leading-relaxed text-burgundy sm:text-3xl">
+          <p className="font-serif text-2xl leading-relaxed text-burgundy sm:text-3xl">
             &ldquo;가장 하고 싶은 말은,
             <br />
             가장 가까운 곳에 두었습니다.&rdquo;

@@ -81,7 +81,7 @@ export default function AboutPage() {
       </div>
 
       <p
-        className="fade-up mt-16 font-serif text-lg italic text-burgundy sm:mt-20"
+        className="fade-up mt-16 font-serif text-lg text-burgundy sm:mt-20"
         style={delay("1.6s")}
       >
         감정을 지니고, 아껴 주세요.
@@ -89,7 +89,7 @@ export default function AboutPage() {
 
       <Link
         href="/shop"
-        className="fade-up group mt-14 inline-flex items-center gap-2 rounded-full border border-brown/20 px-8 py-3.5 text-sm tracking-wide text-brown transition-colors hover:border-burgundy hover:text-burgundy"
+        className="fade-up group mt-14 inline-flex items-center gap-2 border border-brown/25 px-9 py-4 text-sm tracking-[0.15em] text-brown transition-colors hover:border-burgundy hover:text-burgundy"
         style={delay("1.75s")}
       >
         마음을 담을 반지 보러 가기

@@ -65,7 +65,7 @@ export default function ShopPage() {
 
               {/* 폴라로이드 하단: 캡션 · 상품명 · 가격 · 담기 */}
               <div className="px-1 pt-5">
-                <p className="font-serif text-sm italic leading-relaxed text-brown-soft">
+                <p className="font-serif text-sm leading-relaxed text-brown-soft">
                   {product.caption}
                 </p>
                 <div className="mt-4 flex items-end justify-between">

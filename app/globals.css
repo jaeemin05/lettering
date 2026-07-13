@@ -16,7 +16,8 @@
   /* 은은한 골드 포인트 */
   --color-gold: #b08d57;
 
-  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  /* 라틴은 Playfair, 한글은 Noto Serif KR이 담당 */
+  --font-serif: var(--font-playfair), var(--font-noto-serif-kr), Georgia, serif;
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
 }
 

@@ -61,7 +61,7 @@ export default function NoticePage() {
               >
                 <td className="py-5 pl-1 align-middle">
                   {notice.pinned ? (
-                    <span className="inline-block rounded-full bg-burgundy px-2.5 py-1 text-[10px] leading-none text-warm-beige">
+                    <span className="inline-block bg-burgundy px-2.5 py-1 text-[10px] leading-none text-warm-beige">
                       공지
                     </span>
                   ) : (

@@ -151,7 +151,7 @@ export default function ReviewPage() {
           {reviews.map((review) => (
             <article
               key={review.author + review.date}
-              className="group overflow-hidden rounded-2xl border border-brown/10 bg-cream shadow-[0_18px_40px_-22px_rgba(74,58,53,0.35)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_26px_52px_-24px_rgba(74,58,53,0.45)]"
+              className="group overflow-hidden rounded-sm border border-brown/10 bg-cream shadow-[0_18px_40px_-22px_rgba(74,58,53,0.35)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_26px_52px_-24px_rgba(74,58,53,0.45)]"
             >
               {/* 라이프스타일 사진: 호버 시 부드러운 줌 */}
               <div className="relative aspect-[4/3] overflow-hidden">
@@ -165,7 +165,7 @@ export default function ReviewPage() {
               <div className="px-7 py-6">
                 <div className="flex items-center justify-between">
                   <Stars rating={review.rating} />
-                  <span className="rounded-full border border-burgundy/25 px-2.5 py-1 text-[10px] text-burgundy">
+                  <span className="border border-burgundy/25 px-2.5 py-1 text-[10px] tracking-wide text-burgundy">
                     {review.product}
                   </span>
                 </div>

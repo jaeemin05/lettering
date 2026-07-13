@@ -1,6 +1,6 @@
 // 전역 폰트·메타데이터를 설정하고 Header/Footer로 페이지를 감싸는 루트 레이아웃
 import type { Metadata } from "next";
-import { Geist, Playfair_Display } from "next/font/google";
+import { Geist, Noto_Serif_KR, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -14,6 +14,13 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   style: ["normal", "italic"],
+});
+
+// 한글 세리프: Playfair에 없는 한글 글리프를 담당 (unicode-range로 필요한 조각만 로드)
+const notoSerifKr = Noto_Serif_KR({
+  variable: "--font-noto-serif-kr",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -30,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${playfair.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${playfair.variable} ${notoSerifKr.variable} h-full antialiased`}
       // 브라우저 확장(HWP 등)이 <html>에 속성을 주입해 생기는 하이드레이션 경고 억제
       suppressHydrationWarning
     >
