@@ -49,7 +49,7 @@ export default function LettersPage() {
           {letters.map((letter) => (
             <article
               key={letter.title}
-              className="group relative overflow-hidden border border-brown/10 bg-cream px-7 pt-10 pb-7 shadow-[0_18px_40px_-22px_rgba(74,58,53,0.35)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_26px_52px_-24px_rgba(74,58,53,0.45)]"
+              className="group relative overflow-hidden border-[0.5px] border-brown/20 bg-cream px-7 pt-10 pb-7 transition-transform duration-500 hover:-translate-y-1.5"
             >
               {/* 항공우편 줄무늬 상단 테두리 */}
               <div className="postal-edge absolute inset-x-0 top-0 h-1.5 opacity-60" />
@@ -71,10 +71,10 @@ export default function LettersPage() {
 
               {/* 주소면: 받는 사람 */}
               <div className="pr-16">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-gold">
+                <p className="text-[10px] uppercase tracking-widest text-gold">
                   Letter from LetteRing
                 </p>
-                <h3 className="mt-4 font-serif text-xl leading-snug text-brown">
+                <h3 className="mt-4 font-serif text-xl leading-snug tracking-tight text-brown">
                   <span className="italic text-burgundy">Dear.</span>{" "}
                   {letter.title}
                 </h3>
@@ -84,8 +84,8 @@ export default function LettersPage() {
               </div>
 
               {/* 하단: 날짜 · 보낸 이 */}
-              <div className="mt-8 flex items-center justify-between border-t border-brown/10 pt-4">
-                <span className="text-xs text-brown-soft">{letter.date}</span>
+              <div className="mt-8 flex items-center justify-between border-t-[0.5px] border-brown/15 pt-4">
+                <span className="font-mono text-xs text-brown-soft">{letter.date}</span>
                 <span className="font-serif text-xs italic text-brown-soft transition-colors duration-300 group-hover:text-burgundy">
                   From. LetteRing
                 </span>

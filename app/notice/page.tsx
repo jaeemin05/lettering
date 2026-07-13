@@ -41,7 +41,7 @@ export default function NoticePage() {
       <section className="mx-auto max-w-3xl px-6 pb-28 sm:px-8">
         <table className="w-full border-t-2 border-burgundy text-left">
           <thead>
-            <tr className="border-b border-brown/15 text-[11px] uppercase tracking-[0.25em] text-brown-soft">
+            <tr className="border-b-[0.5px] border-brown/20 text-[11px] uppercase tracking-widest text-brown-soft">
               <th scope="col" className="w-16 py-3.5 pl-1 font-normal sm:w-20">
                 No.
               </th>
@@ -77,7 +77,7 @@ export default function NoticePage() {
                     {notice.title}
                   </span>
                 </td>
-                <td className="py-5 pr-1 text-right align-middle text-xs text-brown-soft">
+                <td className="py-5 pr-1 text-right align-middle font-mono text-xs text-brown-soft">
                   {notice.date}
                 </td>
               </tr>

@@ -109,7 +109,7 @@ function ReviewScene({ scene }: { scene: Review["scene"] }) {
       // 손편지 위에 놓인 반지
       return (
         <div className="relative flex h-full w-full items-center justify-center">
-          <div className="absolute inset-x-10 bottom-10 h-24 rotate-[4deg] rounded-sm bg-cream/45 shadow-[0_8px_18px_-10px_rgba(74,58,53,0.4)]">
+          <div className="absolute inset-x-10 bottom-10 h-24 rotate-[4deg] rounded-sm bg-cream/50">
             <div className="mx-4 mt-4 space-y-2.5">
               {[75, 60, 40].map((w) => (
                 <div key={w} className="h-px bg-brown/25" style={{ width: `${w}%` }} />
@@ -151,7 +151,7 @@ export default function ReviewPage() {
           {reviews.map((review) => (
             <article
               key={review.author + review.date}
-              className="group overflow-hidden rounded-sm border border-brown/10 bg-cream shadow-[0_18px_40px_-22px_rgba(74,58,53,0.35)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_26px_52px_-24px_rgba(74,58,53,0.45)]"
+              className="group overflow-hidden border-[0.5px] border-brown/20 bg-cream transition-transform duration-500 hover:-translate-y-1.5"
             >
               {/* 라이프스타일 사진: 호버 시 부드러운 줌 */}
               <div className="relative aspect-[4/3] overflow-hidden">
@@ -172,9 +172,9 @@ export default function ReviewPage() {
                 <p className="mt-4 text-sm leading-relaxed text-brown">
                   {review.text}
                 </p>
-                <div className="mt-5 flex items-center justify-between border-t border-brown/10 pt-4 text-xs text-brown-soft">
+                <div className="mt-5 flex items-center justify-between border-t-[0.5px] border-brown/15 pt-4 text-xs text-brown-soft">
                   <span>{review.author} 님</span>
-                  <span>{review.date}</span>
+                  <span className="font-mono">{review.date}</span>
                 </div>
               </div>
             </article>

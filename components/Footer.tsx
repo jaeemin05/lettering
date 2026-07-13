@@ -4,13 +4,13 @@ import { navItems } from "@/lib/nav";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-brown/10 bg-cream">
+    <footer className="border-t-[0.5px] border-brown/20">
       {/* 상단: 브랜드 · 내비 · 고객센터 */}
-      <div className="mx-auto max-w-6xl px-6 py-16 sm:px-8">
-        <div className="grid gap-12 md:grid-cols-[1.2fr_1fr_1fr]">
+      <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8">
+        <div className="grid gap-14 md:grid-cols-[1.2fr_1fr_1fr]">
           {/* 브랜드 */}
           <div>
-            <p className="font-serif text-2xl text-burgundy">
+            <p className="font-serif text-2xl tracking-tight text-burgundy">
               Lette<span className="italic">Ring</span>
             </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-brown-soft">
@@ -22,10 +22,8 @@ export default function Footer() {
 
           {/* 내비게이션 */}
           <div>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-brown">
-              Menu
-            </p>
-            <nav className="mt-5 flex flex-col gap-2.5">
+            <p className="text-xs uppercase tracking-widest text-brown">Menu</p>
+            <nav className="mt-6 flex flex-col gap-2.5">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -40,10 +38,10 @@ export default function Footer() {
 
           {/* 고객센터 */}
           <div>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-brown">
+            <p className="text-xs uppercase tracking-widest text-brown">
               Customer Center
             </p>
-            <p className="mt-5 font-serif text-xl text-brown">070-1234-5678</p>
+            <p className="mt-6 font-mono text-lg text-brown">070-1234-5678</p>
             <p className="mt-2 text-sm leading-relaxed text-brown-soft">
               평일 10:00 – 18:00 (점심 12:30 – 13:30)
               <br />
@@ -51,7 +49,7 @@ export default function Footer() {
             </p>
             <a
               href="mailto:hello@lettering.kr"
-              className="mt-3 inline-block text-sm text-brown-soft underline underline-offset-4 transition-colors hover:text-burgundy"
+              className="mt-3 inline-block font-mono text-xs text-brown-soft underline underline-offset-4 transition-colors hover:text-burgundy"
             >
               hello@lettering.kr
             </a>
@@ -60,9 +58,9 @@ export default function Footer() {
       </div>
 
       {/* 하단: 사업자 정보 */}
-      <div className="border-t border-brown/10">
+      <div className="border-t-[0.5px] border-brown/15">
         <div className="mx-auto max-w-6xl px-6 py-8 sm:px-8">
-          <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-xs leading-relaxed text-brown-soft">
+          <div className="flex flex-wrap gap-x-5 gap-y-1.5 font-mono text-[11px] leading-relaxed text-brown-soft">
             <span>상호명 : LetteRing (레터링)</span>
             <span>대표 : 김진심</span>
             <span>주소 : 서울특별시 성동구 성수일로 77, 3층</span>
@@ -82,7 +80,7 @@ export default function Footer() {
                 개인정보처리방침
               </Link>
             </div>
-            <p className="text-xs text-brown-soft">
+            <p className="font-mono text-[11px] text-brown-soft">
               © {new Date().getFullYear()} LetteRing. All rights reserved.
             </p>
           </div>

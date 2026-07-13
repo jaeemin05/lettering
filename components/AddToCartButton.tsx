@@ -26,10 +26,10 @@ export default function AddToCartButton({ productId }: { productId: string }) {
       type="button"
       onClick={handleClick}
       aria-label="장바구니에 담기"
-      className={`inline-flex items-center gap-1.5 px-4 py-2.5 text-xs tracking-[0.1em] transition-all duration-300 ${
+      className={`inline-flex shrink-0 items-center gap-1.5 border-b-[0.5px] pb-1 text-xs tracking-widest transition-colors duration-300 ${
         added
-          ? "bg-burgundy text-warm-beige"
-          : "border border-brown/25 text-brown hover:border-burgundy hover:text-burgundy"
+          ? "border-burgundy text-burgundy"
+          : "border-brown/40 text-brown hover:border-burgundy hover:text-burgundy"
       }`}
     >
       {added ? (

@@ -19,6 +19,8 @@
   /* 라틴은 Playfair, 한글은 Noto Serif KR이 담당 */
   --font-serif: var(--font-playfair), var(--font-noto-serif-kr), Georgia, serif;
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  /* 타자기풍 모노 (가격·날짜·번호) */
+  --font-mono: var(--font-courier), "Courier New", monospace;
 }
 
 body {
@@ -142,6 +144,33 @@ button {
   background: radial-gradient(circle at 35% 30%, #8d2e47, #571727);
   border-radius: 55% 45% 60% 40% / 50% 55% 45% 50%;
   box-shadow: inset 0 -2px 4px rgba(38, 7, 15, 0.5);
+}
+
+/* --- 미니 왁스 실 뱃지 (상품 카드 등의 아날로그 디테일) --- */
+.wax-seal-mini {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #f2ddd0;
+  background: radial-gradient(circle at 32% 28%, #953450 0%, #6b1d2f 58%, #4a1220 100%);
+  border-radius: 47% 53% 55% 45% / 51% 47% 53% 49%;
+  box-shadow:
+    inset 0 1px 3px rgba(255, 238, 224, 0.25),
+    inset 0 -3px 6px rgba(38, 7, 15, 0.5);
+}
+
+.wax-seal-mini::before {
+  content: "";
+  position: absolute;
+  inset: 0.35rem;
+  border-radius: 50%;
+  border: 1px solid rgba(242, 221, 208, 0.4);
 }
 
 /* --- 항공우편 봉투 가장자리 줄무늬 (Letters 페이지) --- */

@@ -22,14 +22,14 @@ export default function AboutPage() {
       </div>
 
       <p
-        className="fade-up mt-14 text-xs uppercase tracking-[0.45em] text-gold"
+        className="fade-up mt-14 text-xs uppercase tracking-widest text-gold"
         style={delay("0.15s")}
       >
         Our Philosophy
       </p>
 
       <h1
-        className="fade-up mt-7 font-serif text-4xl leading-snug text-burgundy sm:text-5xl"
+        className="fade-up mt-7 font-serif text-4xl leading-snug tracking-tight text-burgundy sm:text-5xl"
         style={delay("0.25s")}
       >
         Carry &amp; Love
@@ -89,7 +89,7 @@ export default function AboutPage() {
 
       <Link
         href="/shop"
-        className="fade-up group mt-14 inline-flex items-center gap-2 border border-brown/25 px-9 py-4 text-sm tracking-[0.15em] text-brown transition-colors hover:border-burgundy hover:text-burgundy"
+        className="fade-up group mt-14 inline-flex items-center gap-2 border-[0.5px] border-brown/30 px-9 py-4 text-sm tracking-[0.15em] text-brown transition-colors hover:border-burgundy hover:text-burgundy"
         style={delay("1.75s")}
       >
         마음을 담을 반지 보러 가기

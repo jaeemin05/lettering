@@ -28,9 +28,9 @@ export default function Header() {
     pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brown/10 bg-warm-beige/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b-[0.5px] border-brown/20 bg-warm-beige">
       {/* 상단: 햄버거(모바일) · 중앙 로고 · 우측 유틸 아이콘 */}
-      <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-5 pt-5 pb-4 sm:px-8">
+      <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-5 pt-6 pb-4 sm:px-8">
         {/* 좌측: 모바일 메뉴 버튼 (데스크톱에선 균형용 빈 칸) */}
         <div className="flex items-center">
           <button
@@ -50,10 +50,10 @@ export default function Header() {
           onClick={() => setOpen(false)}
           className="flex flex-col items-center leading-none"
         >
-          <span className="font-serif text-[1.7rem] tracking-[0.02em] text-burgundy sm:text-3xl">
+          <span className="font-serif text-[1.7rem] tracking-tight text-burgundy sm:text-3xl">
             Lette<span className="italic">Ring</span>
           </span>
-          <span className="mt-1.5 hidden text-[9px] uppercase tracking-[0.45em] text-brown-soft sm:block">
+          <span className="mt-2 hidden text-[9px] uppercase tracking-widest text-brown-soft sm:block">
             engraving your mind
           </span>
         </Link>
@@ -77,23 +77,23 @@ export default function Header() {
           <Link
             href="/cart"
             aria-label="장바구니"
-            className="relative p-1 text-brown transition-colors hover:text-burgundy"
+            className="flex items-baseline gap-1 p-1 text-brown transition-colors hover:text-burgundy"
           >
             <ShoppingBag size={19} strokeWidth={1.5} />
-            <span className="absolute -right-0.5 -top-0.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-burgundy text-[8px] leading-none text-warm-beige">
+            <sup className="font-mono text-[10px] leading-none text-burgundy">
               {cartCount}
-            </span>
+            </sup>
           </Link>
         </div>
       </div>
 
       {/* 하단: 중앙 정렬 데스크톱 내비게이션 */}
-      <nav className="hidden justify-center gap-12 pb-4 md:flex">
+      <nav className="hidden justify-center gap-10 pb-4 md:flex">
         {navItems.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className={`group relative text-[11px] uppercase tracking-[0.3em] transition-colors hover:text-burgundy ${
+            className={`group relative text-xs uppercase tracking-widest transition-colors hover:text-burgundy ${
               isActive(item.href) ? "text-burgundy" : "text-brown"
             }`}
           >
@@ -109,14 +109,14 @@ export default function Header() {
 
       {/* 모바일 드롭다운 */}
       {open && (
-        <nav className="border-t border-brown/10 bg-warm-beige md:hidden">
+        <nav className="border-t-[0.5px] border-brown/20 bg-warm-beige md:hidden">
           <div className="mx-auto flex max-w-6xl flex-col px-6 py-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className={`flex items-baseline justify-between border-b border-brown/5 py-3.5 text-xs uppercase tracking-[0.25em] transition-colors last:border-0 hover:text-burgundy ${
+                className={`flex items-baseline justify-between border-b-[0.5px] border-brown/10 py-3.5 text-xs uppercase tracking-widest transition-colors last:border-0 hover:text-burgundy ${
                   isActive(item.href) ? "text-burgundy" : "text-brown"
                 }`}
               >
@@ -130,7 +130,7 @@ export default function Header() {
             <Link
               href="/mypage"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-2 py-3.5 text-xs uppercase tracking-[0.25em] text-brown transition-colors hover:text-burgundy"
+              className="flex items-center gap-2 py-3.5 text-xs uppercase tracking-widest text-brown transition-colors hover:text-burgundy"
             >
               <User size={14} strokeWidth={1.5} /> My Page
             </Link>

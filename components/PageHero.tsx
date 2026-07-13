@@ -7,15 +7,15 @@ type PageHeroProps = {
 
 export default function PageHero({ eyebrow, title, description }: PageHeroProps) {
   return (
-    <section className="mx-auto max-w-3xl px-6 pt-20 pb-14 text-center">
-      <p className="text-xs uppercase tracking-[0.4em] text-gold">{eyebrow}</p>
-      <h1 className="mt-5 font-serif text-4xl leading-tight text-burgundy sm:text-5xl">
+    <section className="mx-auto max-w-3xl px-6 pt-24 pb-16 text-center">
+      <p className="text-xs uppercase tracking-widest text-gold">{eyebrow}</p>
+      <h1 className="mt-6 font-serif text-4xl leading-tight tracking-tight text-burgundy sm:text-5xl">
         {title}
       </h1>
       <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-brown-soft">
         {description}
       </p>
-      <span className="mx-auto mt-10 block h-px w-16 bg-gold/60" />
+      <span className="mx-auto mt-12 block h-px w-14 bg-brown/25" />
     </section>
   );
 }
