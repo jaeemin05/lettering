@@ -1,7 +1,8 @@
 // 사진과 별점이 담긴 고객 후기를 그리드로 보여주는 Review(후기) 페이지
+import Image from "next/image";
 import { Star } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import RingSilhouette from "@/components/RingSilhouette";
+import { filmClass, photos, unsplash } from "@/lib/images";
 
 type Review = {
   text: string;
@@ -9,8 +10,8 @@ type Review = {
   product: string;
   date: string;
   rating: number;
-  photo: string;
-  scene: "couple" | "single" | "bracelet" | "letter";
+  img: string;
+  alt: string;
 };
 
 const reviews: Review[] = [
@@ -20,8 +21,8 @@ const reviews: Review[] = [
     product: "기본반지",
     date: "2026.07.02",
     rating: 5,
-    photo: "photo-warm-a",
-    scene: "single",
+    img: photos.necklaceSkin,
+    alt: "자연광 아래 살결 위에 얹힌 가는 금목걸이",
   },
   {
     text: "커플로 샀는데 너무 이뻐요ㅠㅠ 각인도 선명하게 잘 나왔어요",
@@ -29,8 +30,8 @@ const reviews: Review[] = [
     product: "꼬임반지",
     date: "2026.06.21",
     rating: 5,
-    photo: "photo-warm-b",
-    scene: "couple",
+    img: photos.coupleHands,
+    alt: "부케 옆에 포개어진, 반지를 낀 두 사람의 손",
   },
   {
     text: "각인 문구 보고 울 뻔했어요.. 기념일 선물로 최고입니다",
@@ -38,8 +39,8 @@ const reviews: Review[] = [
     product: "디자인반지",
     date: "2026.06.09",
     rating: 5,
-    photo: "photo-warm-c",
-    scene: "letter",
+    img: photos.penLetter,
+    alt: "편지지 위에 글을 쓰고 있는 만년필",
   },
   {
     text: "생각보다 더 고급스러워요! 포장이 진짜 편지처럼 와서 감동",
@@ -47,8 +48,8 @@ const reviews: Review[] = [
     product: "기본반지",
     date: "2026.05.30",
     rating: 5,
-    photo: "photo-warm-d",
-    scene: "bracelet",
+    img: photos.goldBracelet,
+    alt: "핑크빛 배경 위의 골드 팔찌",
   },
   {
     text: "매일 끼고 다니는데 두 달째 변색 없이 그대로예요",
@@ -56,8 +57,8 @@ const reviews: Review[] = [
     product: "꼬임반지",
     date: "2026.05.11",
     rating: 4,
-    photo: "photo-warm-b",
-    scene: "single",
+    img: photos.twistedGold,
+    alt: "돌 위에 놓인 꼬임 형태의 골드 링",
   },
   {
     text: "손이 예뻐 보이는 반지는 처음이에요. 재구매 의사 100%",
@@ -65,8 +66,8 @@ const reviews: Review[] = [
     product: "디자인반지",
     date: "2026.04.26",
     rating: 5,
-    photo: "photo-warm-a",
-    scene: "couple",
+    img: photos.pinkRing,
+    alt: "핑크 원석이 세팅된 골드 반지",
   },
 ];
 
@@ -87,41 +88,6 @@ function Stars({ rating, size = 14 }: { rating: number; size?: number }) {
       )}
     </div>
   );
-}
-
-// 후기 사진 플레이스홀더 속 연출 장면
-function ReviewScene({ scene }: { scene: Review["scene"] }) {
-  switch (scene) {
-    case "couple":
-      // 나란히 포개어진 커플링
-      return (
-        <div className="flex items-center">
-          <RingSilhouette className="h-20 w-20" />
-          <RingSilhouette className="-ml-6 mt-7 h-16 w-16" />
-        </div>
-      );
-    case "bracelet":
-      // 프레임 밖으로 크게 걸쳐진 팔찌
-      return (
-        <RingSilhouette className="h-48 w-48 translate-x-16 translate-y-16" />
-      );
-    case "letter":
-      // 손편지 위에 놓인 반지
-      return (
-        <div className="relative flex h-full w-full items-center justify-center">
-          <div className="absolute inset-x-10 bottom-10 h-24 rotate-[4deg] rounded-sm bg-cream/50">
-            <div className="mx-4 mt-4 space-y-2.5">
-              {[75, 60, 40].map((w) => (
-                <div key={w} className="h-px bg-brown/25" style={{ width: `${w}%` }} />
-              ))}
-            </div>
-          </div>
-          <RingSilhouette className="h-16 w-16 -translate-y-3" />
-        </div>
-      );
-    default:
-      return <RingSilhouette className="h-24 w-24" />;
-  }
 }
 
 export default function ReviewPage() {
@@ -155,10 +121,14 @@ export default function ReviewPage() {
             >
               {/* 라이프스타일 사진: 호버 시 부드러운 줌 */}
               <div className="relative aspect-[4/3] overflow-hidden">
-                <div
-                  className={`grain ${review.photo} flex h-full w-full items-center justify-center transition-transform duration-700 ease-out group-hover:scale-105`}
-                >
-                  <ReviewScene scene={review.scene} />
+                <div className="grain relative h-full w-full transition-transform duration-700 ease-out group-hover:scale-105">
+                  <Image
+                    src={unsplash(review.img, 600)}
+                    alt={review.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className={filmClass}
+                  />
                 </div>
               </div>
 

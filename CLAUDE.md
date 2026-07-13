@@ -34,7 +34,7 @@ Typography: `font-serif` (Playfair Display) for headings, logo, and emotional pu
 
 ## Architecture
 
-App Router. Routes are `app/<name>/page.tsx`; the five nav sections are `about`, `shop`, `letters`, `review`, `notice`. Pages are fully designed; product photos are CSS placeholders (`.photo-warm-*` gradients + `.grain` noise + `RingSilhouette`) meant to be swapped for `next/image` later. Page copy/data lives inline in each page except products ([lib/products.ts](lib/products.ts)) and nav ([lib/nav.ts](lib/nav.ts)).
+App Router. Routes are `app/<name>/page.tsx`; the five nav sections are `about`, `shop`, `letters`, `review`, `notice`. Photos are curated Unsplash images served via `next/image` — [lib/images.ts](lib/images.ts) is the single source (photo IDs with Korean descriptions, `unsplash()` URL helper, and `filmClass` — a desaturate/sepia filter applied to every photo for analogue cohesion; keep it when adding images). Each photo wrapper also carries the `.grain` noise overlay. `images.unsplash.com` is allowed in [next.config.ts](next.config.ts). Page copy/data lives inline in each page except products ([lib/products.ts](lib/products.ts)) and nav ([lib/nav.ts](lib/nav.ts)).
 
 The cart is client-side: [lib/cart.ts](lib/cart.ts) persists to localStorage and fires a `cart:updated` event; `Header` subscribes for the badge, `AddToCartButton` writes. There is no `/cart` or `/mypage` page yet — the header icons 404.
 

@@ -88,23 +88,6 @@ button {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
 }
 
-/* --- 따뜻한 조명의 사진 플레이스홀더 그라디언트 --- */
-.photo-warm-a {
-  background: radial-gradient(130% 110% at 22% 12%, #f6ead9 0%, #e6cdae 42%, #cda684 72%, #a97c5c 100%);
-}
-
-.photo-warm-b {
-  background: radial-gradient(130% 110% at 75% 18%, #f4e3d4 0%, #e0bfa4 40%, #b98a72 72%, #8a5646 100%);
-}
-
-.photo-warm-c {
-  background: radial-gradient(125% 115% at 50% 0%, #f1e0cf 0%, #d9b394 45%, #a97862 75%, #6b3d3a 100%);
-}
-
-.photo-warm-d {
-  background: radial-gradient(130% 120% at 30% 85%, #f3e7d8 0%, #e3c6a8 40%, #c39177 70%, #7c4a44 100%);
-}
-
 /* --- 버건디 왁스 실링 (About 페이지 상단 오브제) --- */
 .wax-seal {
   position: relative;

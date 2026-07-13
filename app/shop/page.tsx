@@ -1,8 +1,9 @@
 // 큐레이션 갤러리처럼 비대칭 배치로 상품을 보여주는 Shop 페이지
+import Image from "next/image";
 import { AtSign } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import RingSilhouette from "@/components/RingSilhouette";
 import AddToCartButton from "@/components/AddToCartButton";
+import { filmClass } from "@/lib/images";
 import { formatPrice, products } from "@/lib/products";
 
 // 큐레이션 배치: 각 상품이 차지하는 그리드 위치·이미지 비율을 다르게
@@ -11,21 +12,21 @@ const placements = [
     // 01 좌측 대형
     wrap: "lg:col-span-6 lg:col-start-1",
     aspect: "aspect-[4/5]",
-    ring: "h-32 w-32",
+    sizes: "(max-width: 1024px) 100vw, 50vw",
     seal: true,
   },
   {
     // 02 우측, 작게, 아래로 밀림
     wrap: "lg:col-span-4 lg:col-start-8 lg:mt-40",
     aspect: "aspect-square",
-    ring: "h-24 w-24",
+    sizes: "(max-width: 1024px) 100vw, 33vw",
     seal: false,
   },
   {
     // 03 중앙에서 살짝 벗어난 위치
     wrap: "lg:col-span-5 lg:col-start-3 lg:mt-28",
     aspect: "aspect-[5/4]",
-    ring: "h-24 w-24",
+    sizes: "(max-width: 1024px) 100vw, 42vw",
     seal: false,
   },
 ];
@@ -57,9 +58,15 @@ export default function ShopPage() {
                 {/* 사진: 얇은 선 프레임, 호버 시 아주 느린 줌 */}
                 <div className="relative overflow-hidden border-[0.5px] border-brown/20">
                   <div
-                    className={`grain ${product.photo} ${p.aspect} flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
+                    className={`grain relative ${p.aspect} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
                   >
-                    <RingSilhouette variant={product.variant} className={p.ring} />
+                    <Image
+                      src={product.image}
+                      alt={product.alt}
+                      fill
+                      sizes={p.sizes}
+                      className={filmClass}
+                    />
                   </div>
                   {/* 시그니처 왁스 실 뱃지 */}
                   {p.seal && (

@@ -1,19 +1,56 @@
 // 브랜드 감성을 전하는 메인 랜딩 페이지 — 히어로·갤러리·약속·편지 인용
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { ArrowRight, AtSign } from "lucide-react";
-import RingSilhouette from "@/components/RingSilhouette";
+import { filmClass, photos, unsplash } from "@/lib/images";
 
 // 스태거 애니메이션 딜레이 헬퍼
 const delay = (s: string) => ({ "--delay": s }) as CSSProperties;
 
 const gallery = [
-  { photo: "photo-warm-a", num: "01", title: "Morning Letter", ko: "아침, 첫 문장을 새기다", ring: "h-24 w-24", double: false },
-  { photo: "photo-warm-b", num: "02", title: "Amber Hour", ko: "노을빛 아래 두 반지", ring: "h-20 w-20", double: true },
-  { photo: "photo-warm-c", num: "03", title: "Sealed Heart", ko: "봉인된 마음", ring: "h-28 w-28", double: false },
-  { photo: "photo-warm-d", num: "04", title: "Quiet Vow", ko: "조용한 약속", ring: "h-20 w-20", double: false },
-  { photo: "photo-warm-b", num: "05", title: "Hand in Hand", ko: "포개어진 손", ring: "h-24 w-24", double: true },
-  { photo: "photo-warm-a", num: "06", title: "P.S.", ko: "추신, 사랑해요", ring: "h-16 w-16", double: false },
+  {
+    num: "01",
+    title: "Morning Letter",
+    ko: "아침, 첫 문장을 새기다",
+    img: photos.penLetter,
+    alt: "줄노트 편지 위에 글을 쓰는 만년필",
+  },
+  {
+    num: "02",
+    title: "Amber Hour",
+    ko: "노을빛에 반짝이는 금",
+    img: photos.moodyGold,
+    alt: "따뜻한 브라운 톤 배경의 금목걸이",
+  },
+  {
+    num: "03",
+    title: "Sealed Heart",
+    ko: "봉인된 마음",
+    img: photos.burgundySilk,
+    alt: "깊은 버건디색 실크 원단의 결",
+  },
+  {
+    num: "04",
+    title: "Quiet Vow",
+    ko: "조용한 약속",
+    img: photos.burgundyBox,
+    alt: "버건디 벨벳 상자에 담긴 진주 목걸이",
+  },
+  {
+    num: "05",
+    title: "Hand in Hand",
+    ko: "포개어진 손",
+    img: photos.coupleHands,
+    alt: "부케 옆에 포개어진, 반지를 낀 두 사람의 손",
+  },
+  {
+    num: "06",
+    title: "P.S.",
+    ko: "추신, 사랑해요",
+    img: photos.moodyFlowers,
+    alt: "어두운 배경 앞의 붉은 꽃다발",
+  },
 ];
 
 const promises = [
@@ -37,7 +74,7 @@ const promises = [
 export default function Home() {
   return (
     <>
-      {/* 히어로: 좌측 카피 · 우측 대형 사진 플레이스홀더 */}
+      {/* 히어로: 좌측 카피 · 우측 대형 사진 */}
       <section className="mx-auto grid max-w-6xl items-center gap-16 px-6 pt-20 pb-24 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:pt-28 lg:pb-32">
         <div>
           <p className="fade-up text-xs uppercase tracking-widest text-gold">
@@ -82,22 +119,17 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 대형 사진 플레이스홀더: 편지 위에 놓인 반지 */}
+        {/* 대형 사진: 편지지 위에 놓인 커플 밴드 */}
         <div className="fade-up relative mx-auto w-full max-w-md" style={delay("0.25s")}>
-          <div className="grain photo-warm-a flex aspect-[4/5] items-center justify-center border-[0.5px] border-brown/20">
-            {/* 반지 아래 깔린 편지지 */}
-            <div className="absolute inset-x-12 bottom-16 h-44 rotate-[5deg] rounded-sm bg-cream/50">
-              <div className="mx-5 mt-6 space-y-3">
-                {[16, 14, 15, 9].map((w, i) => (
-                  <div
-                    key={i}
-                    className="h-px bg-brown/25"
-                    style={{ width: `${w * 5}%` }}
-                  />
-                ))}
-              </div>
-            </div>
-            <RingSilhouette className="h-32 w-32 -translate-y-6" />
+          <div className="grain relative aspect-[4/5] border-[0.5px] border-brown/20">
+            <Image
+              src={unsplash(photos.bandsOnPaper, 900)}
+              alt="찢어진 편지지 위에 놓인 두 개의 골드 밴드 반지"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className={filmClass}
+            />
           </div>
 
           {/* 모서리에 겹쳐진 손편지 카드 */}
@@ -140,18 +172,19 @@ export default function Home() {
           {gallery.map((item) => (
             <figure
               key={item.num}
-              className={`grain ${item.photo} relative aspect-square w-60 shrink-0 snap-center border-[0.5px] border-brown/20 sm:w-72`}
+              className="relative aspect-square w-60 shrink-0 snap-center border-[0.5px] border-brown/20 sm:w-72"
             >
-              <div className="flex h-full items-center justify-center">
-                {item.double ? (
-                  <div className="flex items-center">
-                    <RingSilhouette className={item.ring} />
-                    <RingSilhouette className="-ml-6 mt-8 h-16 w-16" />
-                  </div>
-                ) : (
-                  <RingSilhouette className={item.ring} />
-                )}
+              <div className="grain relative h-full w-full">
+                <Image
+                  src={unsplash(item.img, 600)}
+                  alt={item.alt}
+                  fill
+                  sizes="288px"
+                  className={filmClass}
+                />
               </div>
+              {/* 캡션 가독성을 위한 하단 그라디언트 */}
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-brown/60 to-transparent" />
               <figcaption className="absolute bottom-4 left-5 right-5">
                 <span className="font-mono text-[10px] text-cream/80">
                   No.{item.num}
